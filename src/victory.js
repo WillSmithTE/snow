@@ -25,23 +25,7 @@ export default class InteractiveLegend extends React.Component {
     constructor(props) {
         super(props);
         this.state = { hiddenSeries: new Set() };
-        this.series = [
-            {
-                name: 'cats',
-                color: '#c33',
-                datapoints: [{ x: 0, y: 5 }, { x: 1, y: 8 }, { x: 2, y: 5 }]
-            },
-            {
-                name: 'dogs',
-                color: '#3c3',
-                datapoints: [{ x: 0, y: 2 }, { x: 1, y: 4 }, { x: 2, y: 6 }]
-            },
-            {
-                name: 'birds',
-                color: '#33c',
-                datapoints: [{ x: 0, y: 3 }, { x: 1, y: 1 }, { x: 2, y: 3 }]
-            }
-        ];
+        this.series = props.series;
     }
 
     buildEvents() {
