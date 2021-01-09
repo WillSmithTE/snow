@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis } from 'victory';
+import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis, VictoryTooltip, VictoryLabel } from 'victory';
 
 
 const toVictoryData = (line) => {
@@ -89,8 +89,10 @@ export default class InteractiveLegend extends React.Component {
                 <VictoryChart
                     height={200}
                     events={this.buildEvents()}
+                    // domain={{x: [0, 365], y: [0, 200]}}
                 >
                     <VictoryAxis />
+                    {/* <VictoryAxis dependentAxis={true} /> */}
                     {this.series.map((s, idx) => {
                         if (this.state.hiddenSeries.has(idx)) {
                             return undefined;
@@ -112,6 +114,7 @@ export default class InteractiveLegend extends React.Component {
                         );
                     })}
                     <VictoryLegend
+                    itemsPerRow={5}
                         name={'legend'}
                         data={this.series.map((s, idx) => {
                             const item = toVictoryLegend(s);
@@ -120,7 +123,7 @@ export default class InteractiveLegend extends React.Component {
                             }
                             return item;
                         })}
-                        height={90}
+                        height={10}
                     />
                 </VictoryChart>
             </div>
