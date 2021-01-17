@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis, VictoryTooltip, VictoryLabel } from 'victory';
+import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis, VictoryTooltip, VictoryLabel, VictoryTheme } from 'victory';
 
 
 const toVictoryData = (line) => {
@@ -17,6 +17,65 @@ const toVictoryLegend = (line) => {
             fill: line.color
         }
     } : { name: line.name };
+};
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec', ''];
+const daysOfYear = [1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366];
+
+
+const thing = {
+    Jan: {
+        firstDay: 1,
+        label: 'Jan'
+    },
+    Feb: {
+        firstDay: 32,
+        label: 'Feb'
+    },
+    Mar: {
+        firstDay: 60,
+        label: 'Mar'
+    },
+    Apr: {
+        firstDay: 91,
+        label: 'Apr'
+    },
+    May: {
+        firstDay: 121,
+        label: 'May'
+    },
+    June: {
+        firstDay: 152,
+        label: 'June'
+    },
+    July: {
+        firstDay: 182,
+        label: 'July'
+    },
+    Aug: {
+        firstDay: 213,
+        label: 'Aug'
+    },
+    Sept: {
+        firstDay: 244,
+        label: 'Sept'
+    },
+    Oct: {
+        firstDay: 274,
+        label: 'Oct'
+    },
+    Nov: {
+        firstDay: 305,
+        label: 'Nov'
+    },
+    Dec: {
+        firstDay: 335,
+        label: 'Dec'
+    },
+    end: {
+        firstDay: 366,
+        label: ''
+    }
 };
 
 export default class InteractiveLegend extends React.Component {
@@ -84,15 +143,20 @@ export default class InteractiveLegend extends React.Component {
     }
 
     render() {
+        console.error(Object.keys(thing))
+
         return (
             <div>
                 <VictoryChart
                     height={200}
                     events={this.buildEvents()}
-                    // domain={{x: [0, 365], y: [0, 200]}}
+                // domain={{x: [0, 365], y: [0, 200]}}
                 >
-                    <VictoryAxis />
-                    <VictoryAxis dependentAxis={true} />
+                    <VictoryAxis
+                        tickValues={Object.values(thing).map(({firstDay}) => firstDay)}
+                        tickFormat={(day) => Object.values(thing).find(({firstDay}) => firstDay === day).label}
+                    />
+                    <VictoryAxis dependentAxis={true} tickFormat={(snow) => `${snow}cm`}/>
                     {this.series.map((s, idx) => {
                         if (this.state.hiddenSeries.has(idx)) {
                             return undefined;
@@ -114,7 +178,8 @@ export default class InteractiveLegend extends React.Component {
                         );
                     })}
                     <VictoryLegend
-                    itemsPerRow={5}
+                        orientation='horizontal'
+                        itemsPerRow={5}
                         name={'legend'}
                         data={this.series.map((s, idx) => {
                             const item = toVictoryLegend(s);

@@ -37,10 +37,16 @@ const dummyResponse = [
 function App() {
 
     const [data, setData] = React.useState(undefined);
+
+    const takeYear = (year) => {
+        return ['2015', '2016', '2017', '2018', '2019', '2020'].includes(year)
+    };
+
     useEffect(() => {
         api.getSpencersCreek().then((response) => {
 
             const data = response
+                .filter(({ year }) => takeYear(year))
                 .map(({ year, data }) => {
                     return {
                         name: year,
@@ -48,7 +54,6 @@ function App() {
                         datapoints: defaults.concat(data.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow })))
                     }
                 });
-            console.error(data.map((thing) => thing.datapoints))
             setData(data)
         });
     }, []);
