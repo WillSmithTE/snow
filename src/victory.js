@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis, VictoryTooltip, VictoryLabel, VictoryTheme } from 'victory';
+import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis } from 'victory';
 
 
 const toVictoryData = (line) => {
@@ -19,11 +19,7 @@ const toVictoryLegend = (line) => {
     } : { name: line.name };
 };
 
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec', ''];
-const daysOfYear = [1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366];
-
-
-const thing = {
+const months = {
     Jan: {
         firstDay: 1,
         label: 'Jan'
@@ -143,27 +139,27 @@ export default class InteractiveLegend extends React.Component {
     }
 
     render() {
-        console.error(Object.keys(thing))
+        console.error(Object.keys(months))
 
         return (
             <div>
                 <VictoryChart
                     height={200}
                     events={this.buildEvents()}
-                domain={{x: [1, 365], y: [0, 350]}}
+                    domain={{ x: [1, 365], y: [0, 350] }}
                 >
                     <VictoryAxis
-                      style={{
-                        grid: { stroke: "#818e99", strokeWidth: 0.5 },
-                      }}                    
-                        tickValues={Object.values(thing).map(({firstDay}) => firstDay)}
-                        tickFormat={(day) => Object.values(thing).find(({firstDay}) => firstDay === day).label}
+                        style={{
+                            grid: { stroke: "#818e99", strokeWidth: 0.5 },
+                        }}
+                        tickValues={Object.values(months).map(({ firstDay }) => firstDay)}
+                        tickFormat={(day) => Object.values(months).find(({ firstDay }) => firstDay === day).label}
                     />
-                    <VictoryAxis 
-                      style={{
-                        grid: { stroke: "#818e99", strokeWidth: 0.5 },
-                      }}
-                    dependentAxis={true} tickFormat={(snow) => `${snow}cm`}/>
+                    <VictoryAxis
+                        style={{
+                            grid: { stroke: "#818e99", strokeWidth: 0.5 },
+                        }}
+                        dependentAxis={true} tickFormat={(snow) => `${snow}cm`} />
                     {this.series.map((s, idx) => {
                         if (this.state.hiddenSeries.has(idx)) {
                             return undefined;
