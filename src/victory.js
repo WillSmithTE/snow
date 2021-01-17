@@ -92,7 +92,7 @@ export default class InteractiveLegend extends React.Component {
                     // domain={{x: [0, 365], y: [0, 200]}}
                 >
                     <VictoryAxis />
-                    {/* <VictoryAxis dependentAxis={true} /> */}
+                    <VictoryAxis dependentAxis={true} />
                     {this.series.map((s, idx) => {
                         if (this.state.hiddenSeries.has(idx)) {
                             return undefined;

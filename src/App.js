@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import InteractiveLegend from './victory';
 import moment from 'moment';
+import { api } from './api';
 
 const defaults = [
     { x: 0, y: 0 },
@@ -37,7 +38,7 @@ function App() {
 
     const [data, setData] = React.useState(undefined);
     useEffect(() => {
-        getResponse().then((response) => {
+        api.getSpencersCreek().then((response) => {
 
             const data = response
                 .map(({ year, data }) => {
@@ -63,12 +64,6 @@ export function dateTransformer(date) {
     const year = momentDate.year();
     const firstDayOfYear = moment(year + '-01-01', 'YYYY-MM-DD');
     return momentDate.diff(firstDayOfYear, 'days');
-}
-
-async function getResponse() {
-    const response = await fetch('http://localhost:5000/api/spencersCreek/a')
-    const jsonResponse = await response.json();
-    return jsonResponse;
 }
 
 export default App;
