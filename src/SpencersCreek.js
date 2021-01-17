@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import InteractiveLegend from './victory';
 import moment from 'moment';
 import { api } from './api';
-
+import { FlexBox } from './App.styled';
+import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
 const defaults = [
     { x: 1, y: 0 },
     { x: 365, y: 0 },
@@ -11,16 +12,34 @@ const defaults = [
 export const SpencersCreek = () => {
 
     const [data, setData] = React.useState(undefined);
+    const [selectedYears, setSelectedYears] = React.useState({
+        '2015': true,
+        '2016': true,
+        '2017': true,
+        '2018': true,
+        '2019': true,
+        '2020': true
+    });
 
-    const takeYear = (year) => {
-        return ['2015', '2016', '2017', '2018', '2019', '2020'].includes(year)
+    const showYear = (year) => {
+        console.error({ year, show: selectedYears[year] })
+        return selectedYears[year];
+    };
+
+    const handleCheckboxChange = ({ target: { name, checked } }) => {
+        const selectedYearsCopy = { ...selectedYears };
+        selectedYearsCopy[name] = checked;
+        setSelectedYears(selectedYearsCopy);
+    };
+
+    const filteredData = () => {
+        return data.filter(({ name }) => showYear(name));
     };
 
     useEffect(() => {
         api.getSpencersCreek().then((response) => {
 
             const data = response
-                .filter(({ year }) => takeYear(year))
                 .map(({ year, data }) => {
                     return {
                         name: year,
@@ -31,7 +50,28 @@ export const SpencersCreek = () => {
             setData(data)
         });
     }, []);
-    return data ? <InteractiveLegend series={data} /> : <h1>Loading...</h1>;
+    return <FlexBox>
+        <div style={{flexGrow: 1}}>
+            <h1>Spencers Creek Snowfall</h1>
+            {data ? <InteractiveLegend series={filteredData()} /> : <h1>Loading...</h1>}
+        </div>
+        {data && <div style={{ minWidth: '300px', height: '80%' }}>
+            <FormGroup style={{display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px'}}>
+                {[...data].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selectedYears} handleCheckboxChange={handleCheckboxChange} />)}
+            </FormGroup>
+        </div>}
+    </FlexBox>;
+}
+
+const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
+    return <FormControlLabel
+        control={<Checkbox
+            checked={selectedYears[year]}
+            onChange={handleCheckboxChange}
+            name={year}
+        />}
+        label={year}
+    />
 }
 
 function getRandomColour() {

@@ -75,16 +75,14 @@ const months = {
 };
 
 export default class InteractiveLegend extends React.Component {
-    series;
 
     constructor(props) {
         super(props);
         this.state = { hiddenSeries: new Set() };
-        this.series = props.series;
     }
 
     buildEvents() {
-        return this.series.map((_, idx) => {
+        return this.props.series.map((_, idx) => {
             return {
                 childName: ['legend'],
                 target: ['data', 'labels'],
@@ -160,7 +158,7 @@ export default class InteractiveLegend extends React.Component {
                             grid: { stroke: "#818e99", strokeWidth: 0.5 },
                         }}
                         dependentAxis={true} tickFormat={(snow) => `${snow}cm`} />
-                    {this.series.map((s, idx) => {
+                    {this.props.series.map((s, idx) => {
                         if (this.state.hiddenSeries.has(idx)) {
                             return undefined;
                         }
@@ -184,7 +182,7 @@ export default class InteractiveLegend extends React.Component {
                         orientation='horizontal'
                         itemsPerRow={6}
                         name={'legend'}
-                        data={this.series.map((s, idx) => {
+                        data={this.props.series.map((s, idx) => {
                             const item = toVictoryLegend(s);
                             if (this.state.hiddenSeries.has(idx)) {
                                 return { ...item, symbol: { fill: '#999' } };
