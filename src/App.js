@@ -58,7 +58,7 @@ function App() {
         });
     }, []);
     return <>
-        <h1>Spencer's Creek Snowfall</h1>
+        <h1>Spencers Creek Snowfall</h1>
         {data ? <InteractiveLegend series={data} /> : <h1>Loading...</h1>}
     </>;
 }
