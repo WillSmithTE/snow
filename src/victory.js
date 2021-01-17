@@ -186,7 +186,7 @@ export default class InteractiveLegend extends React.Component {
                     })}
                     <VictoryLegend
                         orientation='horizontal'
-                        itemsPerRow={5}
+                        itemsPerRow={6}
                         name={'legend'}
                         data={this.series.map((s, idx) => {
                             const item = toVictoryLegend(s);
