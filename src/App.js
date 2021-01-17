@@ -4,7 +4,7 @@ import moment from 'moment';
 import { api } from './api';
 
 const defaults = [
-    { x: 0, y: 0 },
+    { x: 1, y: 0 },
     { x: 365, y: 0 },
 ];
 const dummyResponse = [

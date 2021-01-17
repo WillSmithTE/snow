@@ -153,10 +153,17 @@ export default class InteractiveLegend extends React.Component {
                 // domain={{x: [0, 365], y: [0, 200]}}
                 >
                     <VictoryAxis
+                      style={{
+                        grid: { stroke: "#818e99", strokeWidth: 0.5 },
+                      }}                    
                         tickValues={Object.values(thing).map(({firstDay}) => firstDay)}
                         tickFormat={(day) => Object.values(thing).find(({firstDay}) => firstDay === day).label}
                     />
-                    <VictoryAxis dependentAxis={true} tickFormat={(snow) => `${snow}cm`}/>
+                    <VictoryAxis 
+                      style={{
+                        grid: { stroke: "#818e99", strokeWidth: 0.5 },
+                      }}
+                    dependentAxis={true} tickFormat={(snow) => `${snow}cm`}/>
                     {this.series.map((s, idx) => {
                         if (this.state.hiddenSeries.has(idx)) {
                             return undefined;
