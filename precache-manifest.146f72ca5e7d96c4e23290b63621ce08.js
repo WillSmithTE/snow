@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0e307272e0f9510895c3938e4dcbbbd8",
+    "revision": "886311f36220b1c53fe112be830ff932",
     "url": "/snow/index.html"
   },
   {
-    "revision": "1b8f4af259f6c2d650ac",
+    "revision": "f25dc49766aa803ed9a9",
     "url": "/snow/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snow/static/js/2.c0b6673f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1b8f4af259f6c2d650ac",
-    "url": "/snow/static/js/main.2dbf8568.chunk.js"
+    "revision": "f25dc49766aa803ed9a9",
+    "url": "/snow/static/js/main.bedd5485.chunk.js"
   },
   {
     "revision": "1777faf5c135a68f2ce7",
