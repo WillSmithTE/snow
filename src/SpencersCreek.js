@@ -3,7 +3,7 @@ import InteractiveLegend from './victory';
 import moment from 'moment';
 import { api } from './api';
 import { FlexBox } from './App.styled';
-import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
+import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/core';
 import {Loading } from './Loading';
 import {Error } from './Error';
 
@@ -64,7 +64,8 @@ export const SpencersCreek = () => {
             {data ? <InteractiveLegend series={filteredData()} /> : <Loading/>}
         </div>
         {data && <div style={{ minWidth: '300px' }}>
-            <FormGroup style={{display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px'}}>
+            <FormLabel >Years</FormLabel>
+            <FormGroup label='Years' style={{display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px'}}>
                 {[...data].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selectedYears} handleCheckboxChange={handleCheckboxChange} />)}
             </FormGroup>
         </div>}
@@ -77,6 +78,7 @@ const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
             checked={selectedYears[year]}
             onChange={handleCheckboxChange}
             name={year}
+            style={{color:'black'}}
         />}
         label={year}
     />
