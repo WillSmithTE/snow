@@ -4,6 +4,9 @@ import moment from 'moment';
 import { api } from './api';
 import { FlexBox } from './App.styled';
 import { Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
+import {Loading } from './Loading';
+import {Error } from './Error';
+
 const defaults = [
     { x: 1, y: 0 },
     { x: 365, y: 0 },
@@ -12,6 +15,7 @@ const defaults = [
 export const SpencersCreek = () => {
 
     const [data, setData] = React.useState(undefined);
+    const [error, setError] = React.useState(false);
     const [selectedYears, setSelectedYears] = React.useState({
         '2015': true,
         '2016': true,
@@ -37,7 +41,8 @@ export const SpencersCreek = () => {
     };
 
     useEffect(() => {
-        api.getSpencersCreek().then((response) => {
+        api.getSpencersCreek().then(
+            (response) => {
 
             const data = response
                 .map(({ year, data }) => {
@@ -48,12 +53,15 @@ export const SpencersCreek = () => {
                     }
                 });
             setData(data)
-        });
+        },
+        () => setError(true)
+        );
     }, []);
     return <FlexBox>
         <div style={{flexGrow: 1}}>
             <h1>Spencers Creek Snowfall</h1>
-            {data ? <InteractiveLegend series={filteredData()} /> : <h1>Loading...</h1>}
+            {error && <Error/>}
+            {data ? <InteractiveLegend series={filteredData()} /> : <Loading/>}
         </div>
         {data && <div style={{ minWidth: '300px', height: '80%' }}>
             <FormGroup style={{display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px'}}>
