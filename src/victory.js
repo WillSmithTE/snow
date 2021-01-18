@@ -149,6 +149,7 @@ export default class InteractiveLegend extends React.Component {
                     <VictoryAxis
                         style={{
                             grid: { stroke: "#818e99", strokeWidth: 0.5 },
+                            tickLabels: { fontSize: 8 },
                         }}
                         tickValues={Object.values(months).map(({ firstDay }) => firstDay)}
                         tickFormat={(day) => Object.values(months).find(({ firstDay }) => firstDay === day).label}
@@ -156,6 +157,7 @@ export default class InteractiveLegend extends React.Component {
                     <VictoryAxis
                         style={{
                             grid: { stroke: "#818e99", strokeWidth: 0.5 },
+                            tickLabels: { fontSize: 8 },
                         }}
                         dependentAxis={true} tickFormat={(snow) => `${snow}cm`} />
                     {this.props.series.map((s, idx) => {
@@ -193,7 +195,6 @@ export default class InteractiveLegend extends React.Component {
                         style={{
                             labels: { fontSize: 8 }
                         }}
-
                     />
                 </VictoryChart>
             </div>
