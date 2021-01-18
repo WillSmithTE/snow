@@ -144,7 +144,7 @@ export default class InteractiveLegend extends React.Component {
                 <VictoryChart
                     height={200}
                     events={this.buildEvents()}
-                    // domain={{ x: [1, 365], y: [0, 350] }}
+                // domain={{ x: [1, 365], y: [0, 350] }}
                 >
                     <VictoryAxis
                         style={{
@@ -190,6 +190,10 @@ export default class InteractiveLegend extends React.Component {
                             return item;
                         })}
                         height={10}
+                        style={{
+                            labels: { fontSize: 8 }
+                        }}
+
                     />
                 </VictoryChart>
             </div>
