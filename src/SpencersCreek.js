@@ -63,7 +63,7 @@ export const SpencersCreek = () => {
             {error && <Error/>}
             {data ? <InteractiveLegend series={filteredData()} /> : <Loading/>}
         </div>
-        {data && <div style={{ minWidth: '300px', height: '80%' }}>
+        {data && <div style={{ minWidth: '300px' }}>
             <FormGroup style={{display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px'}}>
                 {[...data].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selectedYears} handleCheckboxChange={handleCheckboxChange} />)}
             </FormGroup>
