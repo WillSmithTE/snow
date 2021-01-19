@@ -137,7 +137,6 @@ export default class InteractiveLegend extends React.Component {
     }
 
     render() {
-        console.error(Object.keys(months))
 
         return (
             <div>
@@ -205,7 +204,7 @@ export default class InteractiveLegend extends React.Component {
                         })}
                         height={10}
                         style={{
-                            labels: { fontSize: 8 }
+                            labels: { fontSize: 8, cursor: 'pointer' }
                         }}
                     />
                 </VictoryChart>
