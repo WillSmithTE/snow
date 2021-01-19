@@ -8,23 +8,17 @@ import {Loading } from './Loading';
 import {Error } from './Error';
 import {distinctColours} from './colours';
 
-const defaults = [
-    { x: 1, y: 0 },
-    { x: 365, y: 0 },
-];
+const defaultYears = {
+    '1981': true,
+    '1982': true,
+    '2020': true
+};
 
 export const SpencersCreek = () => {
 
     const [data, setData] = React.useState(undefined);
     const [error, setError] = React.useState(false);
-    const [selectedYears, setSelectedYears] = React.useState({
-        '2015': true,
-        '2016': true,
-        '2017': true,
-        '2018': true,
-        '2019': true,
-        '2020': true
-    });
+    const [selectedYears, setSelectedYears] = React.useState(defaultYears);
 
     const showYear = (year) => {
         console.error({ year, show: selectedYears[year] })
@@ -50,7 +44,7 @@ export const SpencersCreek = () => {
                     return {
                         name: year,
                         color: distinctColours[index],
-                        datapoints: defaults.concat(data.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow })))
+                        datapoints: data.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow }))
                     }
                 });
             setData(data)
