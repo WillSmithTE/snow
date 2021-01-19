@@ -21,7 +21,6 @@ export const SpencersCreek = () => {
     const [selectedYears, setSelectedYears] = React.useState(defaultYears);
 
     const showYear = (year) => {
-        console.error({ year, show: selectedYears[year] })
         return selectedYears[year];
     };
 
