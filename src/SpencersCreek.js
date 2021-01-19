@@ -6,6 +6,7 @@ import { FlexBox } from './App.styled';
 import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/core';
 import {Loading } from './Loading';
 import {Error } from './Error';
+import {distinctColours} from './colours';
 
 const defaults = [
     { x: 1, y: 0 },
@@ -45,10 +46,10 @@ export const SpencersCreek = () => {
             (response) => {
 
             const data = response
-                .map(({ year, data }) => {
+                .map(({ year, data }, index) => {
                     return {
                         name: year,
-                        color: getRandomColour(),
+                        color: distinctColours[index],
                         datapoints: defaults.concat(data.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow })))
                     }
                 });
@@ -82,10 +83,6 @@ const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
         />}
         label={year}
     />
-}
-
-function getRandomColour() {
-    return "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
 }
 
 export function dateTransformer(date) {
