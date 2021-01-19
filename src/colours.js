@@ -1,3 +1,5 @@
+// colours from here https://mokole.com/palette.html
+
 export const distinctColours = [
     '#556b2f',
     '#2f4f4f',
