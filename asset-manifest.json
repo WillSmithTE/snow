@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/snow/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/snow/static/js/main.18648937.chunk.js",
-    "main.js.map": "/snow/static/js/main.18648937.chunk.js.map",
+    "main.js": "/snow/static/js/main.b9710e30.chunk.js",
+    "main.js.map": "/snow/static/js/main.b9710e30.chunk.js.map",
     "runtime-main.js": "/snow/static/js/runtime-main.c4c897db.js",
     "runtime-main.js.map": "/snow/static/js/runtime-main.c4c897db.js.map",
     "static/js/2.954d2550.chunk.js": "/snow/static/js/2.954d2550.chunk.js",
     "static/js/2.954d2550.chunk.js.map": "/snow/static/js/2.954d2550.chunk.js.map",
     "index.html": "/snow/index.html",
-    "precache-manifest.1f79a83cc59e4f46eae01aba47ed82f5.js": "/snow/precache-manifest.1f79a83cc59e4f46eae01aba47ed82f5.js",
+    "precache-manifest.667ab7c2d68b9178b0aa096084a740f3.js": "/snow/precache-manifest.667ab7c2d68b9178b0aa096084a740f3.js",
     "service-worker.js": "/snow/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/snow/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.954d2550.chunk.js.LICENSE.txt": "/snow/static/js/2.954d2550.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c4c897db.js",
     "static/js/2.954d2550.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.18648937.chunk.js"
+    "static/js/main.b9710e30.chunk.js"
   ]
 }
