@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c3e427c1f41aa6e43c093bbd61871b3",
+    "revision": "ad3c77a27499bc5f2f2cf9d9ad35f794",
     "url": "/snow/index.html"
   },
   {
