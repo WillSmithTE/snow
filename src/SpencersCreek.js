@@ -53,7 +53,7 @@ export const SpencersCreek = () => {
     }, []);
     return <FlexBox>
         <div style={{flexGrow: 1}}>
-            <h1>Spencers Creek Snowfall</h1>
+            <h1>Spencers Creek Snow Depth</h1>
             {error && <Error/>}
             {data ? <InteractiveLegend series={filteredData()} /> : <Loading/>}
         </div>
