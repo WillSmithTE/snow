@@ -1,8 +1,8 @@
 import React from 'react';
-import { SpencersCreek } from './SpencersCreek';
+import { Places } from './Places';
 
 function App() {
-    return <SpencersCreek/>
+    return <Places/>;
 }
 
 export default App;

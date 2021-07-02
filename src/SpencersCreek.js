@@ -1,23 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import InteractiveLegend from './victory';
-import moment from 'moment';
-import { api } from './api';
 import { FlexBox } from './App.styled';
 import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/core';
-import {Loading } from './Loading';
-import {Error } from './Error';
-import {distinctColours} from './colours';
+import { Loading } from './Loading';
+import { distinctColours } from './colours';
+import { dateTransformer } from './dateTransformer';
 
 const defaultYears = {
-    '1981': true,
-    '1982': true,
-    '2020': true
+    '2020': true,
+    '2021': true,
 };
 
-export const SpencersCreek = () => {
+export const SpencersCreek = ({ data, placeName }) => {
 
-    const [data, setData] = React.useState(undefined);
-    const [error, setError] = React.useState(false);
     const [selectedYears, setSelectedYears] = React.useState(defaultYears);
 
     const showYear = (year) => {
@@ -30,37 +25,29 @@ export const SpencersCreek = () => {
         setSelectedYears(selectedYearsCopy);
     };
 
+    const graphData = data
+        .map(({ year, yearData }, index) => {
+            return {
+                name: year,
+                color: distinctColours[index],
+                datapoints: yearData.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow }))
+            }
+        });
+
     const filteredData = () => {
-        return data.filter(({ name }) => showYear(name));
+        return graphData.filter(({ name }) => showYear(name));
     };
 
-    useEffect(() => {
-        api.getSpencersCreek().then(
-            (response) => {
 
-            const data = response
-                .map(({ year, data }, index) => {
-                    return {
-                        name: year,
-                        color: distinctColours[index],
-                        datapoints: data.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow }))
-                    }
-                });
-            setData(data)
-        },
-        () => setError(true)
-        );
-    }, []);
     return <FlexBox>
-        <div style={{flexGrow: 1}}>
-            <h1>Spencers Creek Snow Depth</h1>
-            {error && <Error/>}
-            {data ? <InteractiveLegend series={filteredData()} /> : <Loading/>}
+        <div style={{ flexGrow: 1 }}>
+            <h1>{placeName} Snow Depth</h1>
+            {graphData ? <InteractiveLegend series={filteredData()} /> : <Loading />}
         </div>
-        {data && <div style={{ minWidth: '300px' }}>
+        {graphData && <div style={{ minWidth: '300px' }}>
             <FormLabel >Years</FormLabel>
-            <FormGroup label='Years' style={{display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px'}}>
-                {[...data].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selectedYears} handleCheckboxChange={handleCheckboxChange} />)}
+            <FormGroup label='Years' style={{ display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px' }}>
+                {[...graphData].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selectedYears} handleCheckboxChange={handleCheckboxChange} key={name}/>)}
             </FormGroup>
         </div>}
     </FlexBox>;
@@ -72,15 +59,8 @@ const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
             checked={selectedYears[year]}
             onChange={handleCheckboxChange}
             name={year}
-            style={{color:'black'}}
+            style={{ color: 'black' }}
         />}
         label={year}
     />
-}
-
-export function dateTransformer(date) {
-    const momentDate = moment(date, 'YYYY-MM-DD');
-    const year = momentDate.year();
-    const firstDayOfYear = moment(year + '-01-01', 'YYYY-MM-DD');
-    return momentDate.diff(firstDayOfYear, 'days');
 }
