@@ -19,60 +19,73 @@ const toVictoryLegend = (line) => {
     } : { name: line.name };
 };
 
-const months = {
-    Jan: {
+const months = [
+    {
         firstDay: 1,
-        label: 'Jan'
+        label: 'Jan',
+        altLabel: 'July',
     },
-    Feb: {
+    {
         firstDay: 32,
-        label: 'Feb'
+        label: 'Feb',
+        altLabel: 'Aug',
     },
-    Mar: {
+    {
         firstDay: 60,
-        label: 'Mar'
+        label: 'Mar',
+        altLabel: 'Sept',
     },
-    Apr: {
+    {
         firstDay: 91,
-        label: 'Apr'
+        label: 'Apr',
+        altLabel: 'Oct',
     },
-    May: {
+    {
         firstDay: 121,
-        label: 'May'
+        label: 'May',
+        altLabel: 'Nov',
     },
-    June: {
+    {
         firstDay: 152,
-        label: 'June'
+        label: 'June',
+        altLabel: 'Dec',
     },
-    July: {
+    {
         firstDay: 182,
-        label: 'July'
+        label: 'July',
+        altLabel: 'Jan',
     },
-    Aug: {
+    {
         firstDay: 213,
-        label: 'Aug'
+        label: 'Aug',
+        altLabel: 'Feb',
     },
-    Sept: {
+    {
         firstDay: 244,
-        label: 'Sept'
+        label: 'Sept',
+        altLabel: 'Mar',
     },
-    Oct: {
+    {
         firstDay: 274,
-        label: 'Oct'
+        label: 'Oct',
+        altLabel: 'Apr',
     },
-    Nov: {
+    {
         firstDay: 305,
-        label: 'Nov'
+        label: 'Nov',
+        altLabel: 'May',
     },
-    Dec: {
+    {
         firstDay: 335,
-        label: 'Dec'
+        label: 'Dec',
+        altLabel: 'June',
     },
-    end: {
+    {
         firstDay: 366,
-        label: ''
+        label: '',
+        altLabel: '',
     }
-};
+];
 
 export default class InteractiveLegend extends React.Component {
 
@@ -160,8 +173,11 @@ export default class InteractiveLegend extends React.Component {
                             grid: { stroke: "#818e99", strokeWidth: 0.5 },
                             tickLabels: { fontSize: 8 },
                         }}
-                        tickValues={Object.values(months).map(({ firstDay }) => firstDay)}
-                        tickFormat={(day) => Object.values(months).find(({ firstDay }) => firstDay === day).label}
+                        tickValues={months.map(({ firstDay }) => firstDay)}
+                        tickFormat={(day) => {
+                            const month = months.find(({ firstDay }) => firstDay === day);
+                            return this.props.isSouthernHemisphere ? month.label : month.altLabel
+                        }}
                     />
                     <VictoryAxis
                         style={{

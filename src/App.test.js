@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
-import { dateTransformer } from './dateTransformer';
+import { convertDateToDayOfYear } from './dateTransformer';
 
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
@@ -10,6 +10,6 @@ test('renders learn react link', () => {
 });
 
 test('date transforms', () => {
-  const transformed = dateTransformer('2020-05-20');
+  const transformed = convertDateToDayOfYear('2020-05-20');
   expect(transformed).toEqual(140);
 });

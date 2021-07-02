@@ -4,14 +4,14 @@ import { FlexBox } from './App.styled';
 import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/core';
 import { Loading } from './Loading';
 import { distinctColours } from './colours';
-import { dateTransformer } from './dateTransformer';
+import { convertDateToDayOfYear } from './dateTransformer';
 
 const defaultYears = {
     '2020': true,
     '2021': true,
 };
 
-export const SpencersCreek = ({ data, placeName }) => {
+export const SpencersCreek = ({ data, placeName, isSouthernHemisphere }) => {
 
     const [selectedYears, setSelectedYears] = React.useState(defaultYears);
 
@@ -30,7 +30,7 @@ export const SpencersCreek = ({ data, placeName }) => {
             return {
                 name: year,
                 color: distinctColours[index],
-                datapoints: yearData.map(({ date, snow }) => ({ x: dateTransformer(date), y: snow }))
+                datapoints: yearData.map(({ date, snow }) => ({ x: convertDateToDayOfYear(date, isSouthernHemisphere), y: snow }))
             }
         });
 
@@ -42,7 +42,7 @@ export const SpencersCreek = ({ data, placeName }) => {
     return <FlexBox>
         <div style={{ flexGrow: 1 }}>
             <h1>{placeName} Snow Depth</h1>
-            <InteractiveLegend series={filteredData()} />
+            <InteractiveLegend series={filteredData()} isSouthernHemisphere={isSouthernHemisphere} />
         </div>
         {graphData && <div style={{ minWidth: '300px' }}>
             <FormLabel >Years</FormLabel>

@@ -19,8 +19,8 @@ export const Places = () => {
     return <>
         {error && <Error />}
         {data ?
-            data.map(({ data, place }) =>
-                <SpencersCreek data={data} placeName={place} key={place} />
+            data.map(({ data, place, isSouthernHemisphere }) =>
+                <SpencersCreek data={data} placeName={place} isSouthernHemisphere={isSouthernHemisphere} key={place} />
             ) :
             <Loading />
         }
