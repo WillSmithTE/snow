@@ -6,12 +6,12 @@ import { Loading } from './Loading';
 import { distinctColours } from './colours';
 import { convertDateToDayOfYear } from './dateTransformer';
 
-const defaultYears = {
-    '2020': true,
-    '2021': true,
-};
+export const PlaceGraph = ({ data, placeName, isSouthernHemisphere }) => {
 
-export const SpencersCreek = ({ data, placeName, isSouthernHemisphere }) => {
+    const defaultYears = {
+        [data[data.length - 1].year]: true,
+        [data[data.length - 2].year]: true,
+    };
 
     const [selectedYears, setSelectedYears] = React.useState(defaultYears);
 

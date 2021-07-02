@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { api } from './api';
 import { Error } from './Error';
 import { Loading } from './Loading';
-import { SpencersCreek } from './SpencersCreek';
+import { PlaceGraph } from './PlaceGraph';
 
 export const Places = () => {
 
@@ -20,7 +20,7 @@ export const Places = () => {
         {error && <Error />}
         {data ?
             data.map(({ data, place, isSouthernHemisphere }) =>
-                <SpencersCreek data={data} placeName={place} isSouthernHemisphere={isSouthernHemisphere} key={place} />
+                <PlaceGraph data={data} placeName={place} isSouthernHemisphere={isSouthernHemisphere} key={place} />
             ) :
             <Loading />
         }
