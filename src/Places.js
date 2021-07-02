@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { api } from './api';
 import { Error } from './Error';
+import { Loading } from './Loading';
 import { SpencersCreek } from './SpencersCreek';
 
 export const Places = () => {
@@ -17,9 +18,12 @@ export const Places = () => {
 
     return <>
         {error && <Error />}
-        {data && data.map(({ data, place }) =>
-            <SpencersCreek data={data} placeName={place} key={place}/>
-        )}
+        {data ?
+            data.map(({ data, place }) =>
+                <SpencersCreek data={data} placeName={place} key={place} />
+            ) :
+            <Loading />
+        }
     </>;
 
 };

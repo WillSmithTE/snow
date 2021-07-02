@@ -42,7 +42,7 @@ export const SpencersCreek = ({ data, placeName }) => {
     return <FlexBox>
         <div style={{ flexGrow: 1 }}>
             <h1>{placeName} Snow Depth</h1>
-            {graphData ? <InteractiveLegend series={filteredData()} /> : <Loading />}
+            <InteractiveLegend series={filteredData()} />
         </div>
         {graphData && <div style={{ minWidth: '300px' }}>
             <FormLabel >Years</FormLabel>
