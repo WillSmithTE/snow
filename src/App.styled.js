@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const FlexBox = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding-top: 20px;
     flex-wrap: wrap;
     justify-content: space-between;
 `;
