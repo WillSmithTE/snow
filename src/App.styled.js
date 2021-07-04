@@ -13,3 +13,9 @@ export const AppWrapper = styled.div`
     padding: 20px;
     flex-direction: column;
 `;
+
+export const TransparentBox = styled.div`
+    opacity: 0.4;
+    margin: 30px;
+    background-color: white;
+`;

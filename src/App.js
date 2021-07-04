@@ -3,6 +3,7 @@ import { AppWrapper } from './App.styled';
 import { FormatSelector } from './FormatSelector';
 import { YearsComparer } from './YearsComparer';
 import { PlacesComparer } from './PlacesComparer';
+import './App.css';
 
 function App() {
 
@@ -12,11 +13,13 @@ function App() {
         setFormat(event.target.value);
     };
 
-    return <AppWrapper>
-        <h1 style={{marginTop: 0}}>The Snow Tracker</h1>
-        <FormatSelector format={format} handleChange={handleChangeFormat} />
-        {format === 'years' ? <YearsComparer /> : <PlacesComparer />}
-    </AppWrapper>;
+    return <>
+        <AppWrapper>
+            <h1 style={{ marginTop: 0 }}>The Snow Tracker</h1>
+            <FormatSelector format={format} handleChange={handleChangeFormat} />
+                {format === 'years' ? <YearsComparer /> : <PlacesComparer />}
+        </AppWrapper>
+    </>;
 }
 
 export default App;

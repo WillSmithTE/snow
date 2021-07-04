@@ -5,8 +5,8 @@ export const FormatSelector = ({ handleChange, format }) => {
     return <FormControl component="fieldset">
         <RadioGroup value={format} onChange={handleChange}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <FormControlLabel value="years" control={<Radio />} label="Compare years" />
-                <FormControlLabel value="resorts" control={<Radio />} label="Compare resorts" />
+                <FormControlLabel value="years" control={<Radio color='black' />} label="Compare years" style={{ paddingRight: '20px' }} />
+                <FormControlLabel value="resorts" control={<Radio color='black' />} label="Compare resorts" />
             </div>
         </RadioGroup>
     </FormControl>
