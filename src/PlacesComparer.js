@@ -51,18 +51,18 @@ const YearSelector = ({ year, setYear, data }) => {
 };
 
 const getYearsWhereAtLeastTwoResortsHaveData = (data) => {
-    const yearsWithData = {};
-    const goodYears = {};
+    const yearsWithAnyData = {};
+    const yearsWithAtLeastTwoResorts = {};
     data.forEach(({ data: placeData }) =>
         placeData.forEach(({ year }) => {
-            if (goodYears[year]) {
+            if (yearsWithAtLeastTwoResorts[year]) {
                 return;
-            } else if (yearsWithData[year]) {
-                goodYears[year] = true;
+            } else if (yearsWithAnyData[year]) {
+                yearsWithAtLeastTwoResorts[year] = true;
             } else {
-                yearsWithData[year] = true;
+                yearsWithAnyData[year] = true;
             }
         })
     );
-    return Object.keys(goodYears);
+    return Object.keys(yearsWithAtLeastTwoResorts);
 };
