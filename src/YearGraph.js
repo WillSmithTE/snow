@@ -5,29 +5,29 @@ import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/c
 import { distinctColours, getRandomColour } from './colours';
 import { convertDateToDayOfYear } from './dateTransformer';
 
-export const PlaceGraph = ({ data, isSouthernHemisphere }) => {
+export const YearGraph = ({ data }) => {
 
-    const lastTwoYears = {
-        [data[data.length - 1].year]: true,
-        [data[data.length - 2].year]: true,
-    };
+    const allSelected = data.reduce((persisted, { place }) => ({
+        [place]: true,
+        ...persisted
+    }), {});
 
-    const [selected, setSelected] = React.useState(lastTwoYears);
+    const [selected, setSelected] = React.useState(allSelected);
 
     const show = (year) => {
         return selected[year];
     };
 
     const handleCheckboxChange = ({ target: { name, checked } }) => {
-        const selectedCopy = { ...selected };
-        selectedCopy[name] = checked;
-        setSelected(selectedCopy);
+        const selectedYearsCopy = { ...selected };
+        selectedYearsCopy[name] = checked;
+        setSelected(selectedYearsCopy);
     };
 
     const graphData = data
-        .map(({ year, yearData }, index) => {
+        .map(({ place, isSouthernHemisphere, data: { yearData } }, index) => {
             return {
-                name: year,
+                name: place,
                 color: distinctColours[index] || getRandomColour(),
                 datapoints: yearData.map(({ date, snow }) => ({ x: convertDateToDayOfYear(date, isSouthernHemisphere), y: snow }))
             }
@@ -40,25 +40,25 @@ export const PlaceGraph = ({ data, isSouthernHemisphere }) => {
 
     return <FlexBox>
         <div style={{ flexGrow: 1 }}>
-            <InteractiveLegend series={filteredData()} isSouthernHemisphere={isSouthernHemisphere} />
+            <InteractiveLegend series={filteredData()} />
         </div>
         {graphData && <div style={{ minWidth: '300px' }}>
-            <FormLabel >Years</FormLabel>
-            <FormGroup label='Years' style={{ display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px' }}>
-                {[...graphData].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selected} handleCheckboxChange={handleCheckboxChange} key={name}/>)}
+            <FormLabel >Places</FormLabel>
+            <FormGroup label='Places' style={{ display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px' }}>
+                {[...graphData].reverse().map(({ name }) => <ItemCheckbox value={name} selected={selected} handleCheckboxChange={handleCheckboxChange} key={name} />)}
             </FormGroup>
         </div>}
     </FlexBox>;
 }
 
-const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
+const ItemCheckbox = ({ selected, handleCheckboxChange, value }) => {
     return <FormControlLabel
         control={<Checkbox
-            checked={selectedYears[year]}
+            checked={selected[value]}
             onChange={handleCheckboxChange}
-            name={year}
+            name={value}
             style={{ color: 'black' }}
         />}
-        label={year}
+        label={value}
     />
 }

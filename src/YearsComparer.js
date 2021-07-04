@@ -18,7 +18,7 @@ export const YearsComparer = () => {
         );
     }, []);
 
-    const { data: placeData, place, isSouthernHemisphere } = (data && data[placeIndex]) || {};
+    const { data: placeData, isSouthernHemisphere } = (data && data[placeIndex]) || {};
 
     return <>
         {error && <Error />}
@@ -26,7 +26,7 @@ export const YearsComparer = () => {
             <>
                 <h2>Snow Depth</h2>
                 <PlaceSelector placeIndex={placeIndex} setPlaceIndex={setPlaceIndex} data={data} />
-                <PlaceGraph data={placeData} placeName={place} isSouthernHemisphere={isSouthernHemisphere} key={place} />
+                <PlaceGraph data={placeData} isSouthernHemisphere={isSouthernHemisphere} />
             </>
             :
             <Loading />

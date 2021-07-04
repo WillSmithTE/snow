@@ -6,7 +6,7 @@ import { PlacesComparer } from './PlacesComparer';
 
 function App() {
 
-    const [format, setFormat] = useState('years');
+    const [format, setFormat] = useState('resorts');
 
     const handleChangeFormat = (event) => {
         setFormat(event.target.value);
