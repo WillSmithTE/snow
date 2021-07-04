@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/snow/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/snow/static/js/main.5ebda05e.chunk.js",
-    "main.js.map": "/snow/static/js/main.5ebda05e.chunk.js.map",
+    "main.js": "/snow/static/js/main.79711a39.chunk.js",
+    "main.js.map": "/snow/static/js/main.79711a39.chunk.js.map",
     "runtime-main.js": "/snow/static/js/runtime-main.c4c897db.js",
     "runtime-main.js.map": "/snow/static/js/runtime-main.c4c897db.js.map",
-    "static/js/2.dbad2391.chunk.js": "/snow/static/js/2.dbad2391.chunk.js",
-    "static/js/2.dbad2391.chunk.js.map": "/snow/static/js/2.dbad2391.chunk.js.map",
+    "static/js/2.459807fd.chunk.js": "/snow/static/js/2.459807fd.chunk.js",
+    "static/js/2.459807fd.chunk.js.map": "/snow/static/js/2.459807fd.chunk.js.map",
     "index.html": "/snow/index.html",
-    "precache-manifest.a6ffa354fb00b8876fafe58435f00112.js": "/snow/precache-manifest.a6ffa354fb00b8876fafe58435f00112.js",
+    "precache-manifest.707754a056f99f9256c152155251ecc1.js": "/snow/precache-manifest.707754a056f99f9256c152155251ecc1.js",
     "service-worker.js": "/snow/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/snow/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.dbad2391.chunk.js.LICENSE.txt": "/snow/static/js/2.dbad2391.chunk.js.LICENSE.txt"
+    "static/js/2.459807fd.chunk.js.LICENSE.txt": "/snow/static/js/2.459807fd.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c4c897db.js",
-    "static/js/2.dbad2391.chunk.js",
+    "static/js/2.459807fd.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.5ebda05e.chunk.js"
+    "static/js/main.79711a39.chunk.js"
   ]
 }
