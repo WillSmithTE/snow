@@ -4,7 +4,7 @@ import { Error } from './Error';
 import { Loading } from './Loading';
 import { PlaceGraph } from './PlaceGraph';
 
-export const Places = () => {
+export const YearsComparer = () => {
 
     const [data, setData] = React.useState(undefined);
     const [error, setError] = React.useState(false);

@@ -2,7 +2,6 @@ import React from 'react';
 import InteractiveLegend from './victory';
 import { FlexBox } from './App.styled';
 import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/core';
-import { Loading } from './Loading';
 import { distinctColours } from './colours';
 import { convertDateToDayOfYear } from './dateTransformer';
 
@@ -41,7 +40,7 @@ export const PlaceGraph = ({ data, placeName, isSouthernHemisphere }) => {
 
     return <FlexBox>
         <div style={{ flexGrow: 1 }}>
-            <h1>{placeName} Snow Depth</h1>
+            <h2>{placeName} Snow Depth</h2>
             <InteractiveLegend series={filteredData()} isSouthernHemisphere={isSouthernHemisphere} />
         </div>
         {graphData && <div style={{ minWidth: '300px' }}>

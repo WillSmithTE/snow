@@ -7,3 +7,9 @@ export const FlexBox = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
 `;
+
+export const AppWrapper = styled.div`
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+`;
