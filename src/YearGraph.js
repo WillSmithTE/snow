@@ -40,7 +40,7 @@ export const YearGraph = ({ data }) => {
 
     return <FlexBox>
         <div style={{ flexGrow: 1 }}>
-            <InteractiveLegend series={filteredData()} />
+            <InteractiveLegend series={filteredData()} monthDisplay='both' />
         </div>
         {graphData && <div style={{ minWidth: '300px' }}>
             <FormLabel >Places</FormLabel>

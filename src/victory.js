@@ -20,71 +20,19 @@ const toVictoryLegend = (line) => {
 };
 
 const months = [
-    {
-        firstDay: 1,
-        label: 'Jan',
-        altLabel: 'July',
-    },
-    {
-        firstDay: 32,
-        label: 'Feb',
-        altLabel: 'Aug',
-    },
-    {
-        firstDay: 60,
-        label: 'Mar',
-        altLabel: 'Sept',
-    },
-    {
-        firstDay: 91,
-        label: 'Apr',
-        altLabel: 'Oct',
-    },
-    {
-        firstDay: 121,
-        label: 'May',
-        altLabel: 'Nov',
-    },
-    {
-        firstDay: 152,
-        label: 'June',
-        altLabel: 'Dec',
-    },
-    {
-        firstDay: 182,
-        label: 'July',
-        altLabel: 'Jan',
-    },
-    {
-        firstDay: 213,
-        label: 'Aug',
-        altLabel: 'Feb',
-    },
-    {
-        firstDay: 244,
-        label: 'Sept',
-        altLabel: 'Mar',
-    },
-    {
-        firstDay: 274,
-        label: 'Oct',
-        altLabel: 'Apr',
-    },
-    {
-        firstDay: 305,
-        label: 'Nov',
-        altLabel: 'May',
-    },
-    {
-        firstDay: 335,
-        label: 'Dec',
-        altLabel: 'June',
-    },
-    {
-        firstDay: 366,
-        label: '',
-        altLabel: '',
-    }
+    { firstDay: 1, south: "Jan", north: "July", both: "Jan/\nJuly" },
+    { firstDay: 32, south: "Feb", north: "Aug", both: "Feb/\nAug" },
+    { firstDay: 60, south: "Mar", north: "Sept", both: "Mar/\nSept" },
+    { firstDay: 91, south: "Apr", north: "Oct", both: "Apr/\nOct" },
+    { firstDay: 121, south: "May", north: "Nov", both: "May/\nNov" },
+    { firstDay: 152, south: "June", north: "Dec", both: "June/\nDec" },
+    { firstDay: 182, south: "July", north: "Jan", both: "July/\nJan" },
+    { firstDay: 213, south: "Aug", north: "Feb", both: "Aug/\nFeb" },
+    { firstDay: 244, south: "Sept", north: "Mar", both: "Sept/\nMar" },
+    { firstDay: 274, south: "Oct", north: "Apr", both: "Oct/\nApr" },
+    { firstDay: 305, south: "Nov", north: "May", both: "Nov/\nMay" },
+    { firstDay: 335, south: "Dec", north: "June", both: "Dec/\nJune" },
+    { firstDay: 366, south: "", north: "", both: "" },
 ];
 
 export default class InteractiveLegend extends React.Component {
@@ -162,7 +110,7 @@ export default class InteractiveLegend extends React.Component {
                             radius={5}
                             labelComponent={<VictoryTooltip
                                 centerOffset={{ x: 5 }}
-                                style={{fontSize: '6px'}}
+                                style={{ fontSize: '6px' }}
                             />}
                         />
                     }
@@ -176,7 +124,7 @@ export default class InteractiveLegend extends React.Component {
                         tickValues={months.map(({ firstDay }) => firstDay)}
                         tickFormat={(day) => {
                             const month = months.find(({ firstDay }) => firstDay === day);
-                            return this.props.isSouthernHemisphere ? month.label : month.altLabel
+                            return month[this.props.monthDisplay];
                         }}
                     />
                     <VictoryAxis
