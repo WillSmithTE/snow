@@ -2,7 +2,7 @@ import React from 'react';
 import { FormControl, FormControlLabel, RadioGroup, Radio } from '@material-ui/core';
 
 export const FormatSelector = ({ handleChange, format }) => {
-    return <FormControl component="fieldset">
+    return <FormControl component="fieldset" style={{ alignItems: 'center', paddingTop: '20px' }} >
         <RadioGroup value={format} onChange={handleChange}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <FormControlLabel value="years" control={<Radio color='black' />} label="Compare years" style={{ paddingRight: '20px' }} />

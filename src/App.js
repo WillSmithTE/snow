@@ -15,9 +15,9 @@ function App() {
 
     return <>
         <AppWrapper>
-            <h1 style={{ marginTop: 0 }}>The Snow Tracker</h1>
-            <FormatSelector format={format} handleChange={handleChangeFormat} />
-                {format === 'years' ? <YearsComparer /> : <PlacesComparer />}
+            <h1 style={{ margin: '0 auto' }}>The Snow Tracker</h1>
+            <FormatSelector format={format} handleChange={handleChangeFormat}/>
+            {format === 'years' ? <YearsComparer /> : <PlacesComparer />}
         </AppWrapper>
     </>;
 }

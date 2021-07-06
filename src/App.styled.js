@@ -10,7 +10,7 @@ export const FlexBox = styled.div`
 
 export const AppWrapper = styled.div`
     display: flex;
-    padding: 20px;
+    padding: 40px;
     flex-direction: column;
 `;
 

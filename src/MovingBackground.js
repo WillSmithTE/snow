@@ -11,3 +11,7 @@ export const MovingBackground = () => {
         <div class="snow layer3"></div>
     </div>
 };
+
+export const MovingBackground2 = () => {
+    return <div class="snowflake"></div>;
+}
