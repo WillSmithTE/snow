@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const FlexBox = styled.div`
     display: flex;
@@ -10,7 +10,6 @@ export const FlexBox = styled.div`
 
 export const AppWrapper = styled.div`
     display: flex;
-    padding: 40px;
     flex-direction: column;
 `;
 
@@ -18,4 +17,20 @@ export const TransparentBox = styled.div`
     opacity: 0.4;
     margin: 30px;
     background-color: white;
+`;
+
+export const Header = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: url(${process.env.PUBLIC_URL + '/mountains.png'}) center 0px; 
+    background-size: auto 150px;
+    background-repeat: repeat no-repeat;
+    min-height: 150px;
+`;
+
+export const Body = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
 `;
