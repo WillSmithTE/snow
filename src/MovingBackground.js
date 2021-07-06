@@ -1,5 +1,6 @@
 import React from 'react';
 import './MovingBackground.scss';
+import './MovingBackground2.scss';
 
 export const MovingBackground = () => {
     return <div class="wrapper">
