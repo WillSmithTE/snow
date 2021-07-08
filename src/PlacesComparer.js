@@ -43,7 +43,7 @@ export const PlacesComparer = () => {
 
 const YearSelector = ({ year, setYear, data }) => {
     const possibleYears = getYearsWhereAtLeastTwoResortsHaveData(data);
-    return <FormControl style={{ width: '300px', paddingTop: '15px 0px 20px' }}>
+    return <FormControl style={{ width: '100px', paddingTop: '15px 0px 20px' }}>
         <Select value={year} onChange={(e) => setYear(e.target.value)}>
             {possibleYears.map((year) => <MenuItem value={year} key={year}>{year}</MenuItem>)}
         </Select>

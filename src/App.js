@@ -16,7 +16,7 @@ function App() {
     return <>
         <AppWrapper>
             <Header>
-                <h1 style={{ margin: '40px auto 0' }}>The Snow Tracker</h1>
+                <img src={`${process.env.PUBLIC_URL}/logo.png`} alt='logo'style={{height: '100px', margin: 'auto auto'}}/>
             </Header>
             <Body>
                 <FormatSelector format={format} handleChange={handleChangeFormat} />

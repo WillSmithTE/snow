@@ -24,13 +24,13 @@ export const Header = styled.div`
     flex-direction: row;
     justify-content: space-between;
     background: url(${process.env.PUBLIC_URL + '/mountains.png'}) center 0px; 
-    background-size: auto 150px;
+    background-size: auto 200px;
     background-repeat: repeat no-repeat;
-    min-height: 150px;
+    min-height: 200px;
 `;
 
 export const Body = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0 40px;
+    padding: 0 120px;
 `;
