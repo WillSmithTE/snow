@@ -7,12 +7,7 @@ import { convertDateToDayOfYear } from './dateTransformer';
 
 export const PlaceGraph = ({ data, isSouthernHemisphere }) => {
 
-    const lastTwoYears = {
-        [data[data.length - 1].year]: true,
-        [data[data.length - 2].year]: true,
-    };
-
-    const [selected, setSelected] = React.useState(lastTwoYears);
+    const [selected, setSelected] = React.useState(getDefaultSelected(data));
 
     const show = (year) => {
         return selected[year];
@@ -45,7 +40,7 @@ export const PlaceGraph = ({ data, isSouthernHemisphere }) => {
         {graphData && <div style={{ minWidth: '300px' }}>
             <FormLabel >Years</FormLabel>
             <FormGroup label='Years' style={{ display: 'flex', flexFlow: 'column wrap', maxHeight: '680px', overflow: 'auto', alignContent: 'flex-start', width: '300px' }}>
-                {[...graphData].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selected} handleCheckboxChange={handleCheckboxChange} key={name}/>)}
+                {[...graphData].reverse().map(({ name }) => <YearCheckbox year={name} selectedYears={selected} handleCheckboxChange={handleCheckboxChange} key={name} />)}
             </FormGroup>
         </div>}
     </FlexBox>;
@@ -62,3 +57,14 @@ const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
         label={year}
     />
 }
+
+const getDefaultSelected = (data) => {
+    const selected = {};
+    for (let i = 1900; i <= data[data.length - 1].year; i++) {
+        selected[i] = false;
+    }
+
+    selected[data[data.length - 1].year] = true;
+    selected[data[data.length - 2].year] = true;
+    return selected;
+};
