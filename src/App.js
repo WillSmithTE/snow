@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppWrapper, Body, Header } from './App.styled';
+import { AppWrapper, Body, Header, Logo } from './App.styled';
 import { FormatSelector } from './FormatSelector';
 import { YearsComparer } from './YearsComparer';
 import { PlacesComparer } from './PlacesComparer';
@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
 
-    const [format, setFormat] = useState('resorts');
+    const [format, setFormat] = useState('years');
 
     const handleChangeFormat = (event) => {
         setFormat(event.target.value);
@@ -16,7 +16,7 @@ function App() {
     return <>
         <AppWrapper>
             <Header>
-                <img src={`${process.env.PUBLIC_URL}/logo.png`} alt='logo'style={{height: '100px', margin: 'auto auto'}}/>
+                <Logo src={`${process.env.PUBLIC_URL}/logo.png`} alt='logo'style={{ }}/>
             </Header>
             <Body>
                 <FormatSelector format={format} handleChange={handleChangeFormat} />

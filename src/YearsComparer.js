@@ -9,7 +9,7 @@ export const YearsComparer = () => {
 
     const [data, setData] = React.useState(undefined);
     const [error, setError] = React.useState(false);
-    const [placeIndex, setPlaceIndex] = React.useState(0);
+    const [placeIndex, setPlaceIndex] = React.useState(undefined);
 
     useEffect(() => {
         api.getSnowDepth().then(
@@ -18,11 +18,19 @@ export const YearsComparer = () => {
         );
     }, []);
 
+    useEffect(() => {
+        if (data) {
+            const spencersCreekIndex = data.findIndex(({ place }) => place === 'Spencers Creek')
+            const newIndex = spencersCreekIndex === - 1 ? 0 : spencersCreekIndex
+            setPlaceIndex(newIndex)
+        }
+    }, [data]);
+
     const { data: placeData, isSouthernHemisphere } = (data && data[placeIndex]) || {};
 
     return <>
         {error && <Error />}
-        {data ?
+        {data && placeIndex !== undefined ?
             <>
                 <h2>Snow Depth</h2>
                 <PlaceSelector placeIndex={placeIndex} setPlaceIndex={setPlaceIndex} data={data} />

@@ -20,17 +20,21 @@ export const TransparentBox = styled.div`
 `;
 
 export const Header = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     background: url(${process.env.PUBLIC_URL + '/mountains.png'}) center 0px; 
     background-size: auto 200px;
     background-repeat: repeat no-repeat;
     min-height: 200px;
 `;
 
+export const Logo = styled.img`
+    height: 100px;
+    margin: auto;
+    display: block;
+    padding-top: 20px;
+`;
+
 export const Body = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 0 120px;
+    padding: 0 10%;
 `;
