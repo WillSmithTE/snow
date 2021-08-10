@@ -21,16 +21,27 @@ export const TransparentBox = styled.div`
 
 export const Header = styled.div`
     background: url(${process.env.PUBLIC_URL + '/mountains.png'}) center 0px; 
-    background-size: auto 200px;
     background-repeat: repeat no-repeat;
-    min-height: 200px;
+    @media (max-width: 600px) {
+        min-height: 150px;
+        background-size: auto 150px;
+    }
+    @media (min-width: 601px) {
+        min-height: 200px;
+        background-size: auto 200px;
+    }
 `;
 
 export const Logo = styled.img`
-    height: 100px;
     margin: auto;
     display: block;
     padding-top: 20px;
+    @media (max-width: 600px) {
+        height: 70px;
+    }
+    @media (min-width: 601px) {
+        height: 100px;
+    }
 `;
 
 export const Body = styled.div`
