@@ -34,7 +34,7 @@ export const PlaceGraph = ({ data, isSouthernHemisphere }) => {
 
 
     return <FlexBox>
-        <div style={{ flexGrow: 1 }}>
+        <div style={{ flexGrow: 1, marginRight: '-60px', marginLeft: '-20px' }}>
             <InteractiveLegend series={filteredData()} monthDisplay={isSouthernHemisphere ? 'south' : 'north'} />
         </div>
         {graphData && <div style={{ minWidth: '300px' }}>
