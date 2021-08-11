@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import InteractiveLegend from './victory';
 import { FlexBox } from './App.styled';
 import { Checkbox, FormControlLabel, FormGroup, FormLabel } from '@material-ui/core';
@@ -7,7 +7,11 @@ import { convertDateToDayOfYear } from './dateTransformer';
 
 export const PlaceGraph = ({ data, isSouthernHemisphere }) => {
 
-    const [selected, setSelected] = React.useState(getDefaultSelected(data));
+    const [selected, setSelected] = React.useState(generateSelected(data));
+
+    useEffect(() => {
+        setSelected(generateSelected(data))
+    }, [data]);
 
     const show = (year) => {
         return selected[year];
@@ -58,7 +62,7 @@ const YearCheckbox = ({ selectedYears, handleCheckboxChange, year }) => {
     />
 }
 
-const getDefaultSelected = (data) => {
+const generateSelected = (data) => {
     const selected = {};
     for (let i = 1900; i <= data[data.length - 1].year; i++) {
         selected[i] = false;

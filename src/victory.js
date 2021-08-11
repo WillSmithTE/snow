@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { VictoryArea, VictoryChart, VictoryLegend, VictoryAxis, VictoryVoronoiContainer, VictoryTooltip } from 'victory';
+import { convertDayOfYearToDate } from './dateTransformer';
 
 
 const toVictoryData = (line) => {
@@ -86,7 +87,7 @@ export const InteractiveLegend = ({ series, monthDisplay }) => {
                 events={events}
                 containerComponent={
                     <VictoryVoronoiContainer
-                        labels={({ datum: { y } }) => `${y}cm`}
+                        labels={({ datum: { x, y } }) => `${dayOfYearToDate(x, monthDisplay)}\n${y}cm`}
                         radius={5}
                         labelComponent={<VictoryTooltip
                             centerOffset={{ x: 5 }}
@@ -142,6 +143,10 @@ export const InteractiveLegend = ({ series, monthDisplay }) => {
             </VictoryChart>
         </div>
     );
+}
+
+function dayOfYearToDate(dayOfYear, monthDisplay) {
+    return convertDayOfYearToDate(dayOfYear, monthDisplay !== 'north')
 }
 
 export default InteractiveLegend;
