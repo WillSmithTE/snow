@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/snow/static/css/main.8efdf476.chunk.css",
-    "main.js": "/snow/static/js/main.25569508.chunk.js",
-    "main.js.map": "/snow/static/js/main.25569508.chunk.js.map",
+    "main.js": "/snow/static/js/main.1c0d8fa5.chunk.js",
+    "main.js.map": "/snow/static/js/main.1c0d8fa5.chunk.js.map",
     "runtime-main.js": "/snow/static/js/runtime-main.f177844a.js",
     "runtime-main.js.map": "/snow/static/js/runtime-main.f177844a.js.map",
-    "static/js/2.43a1e7cc.chunk.js": "/snow/static/js/2.43a1e7cc.chunk.js",
-    "static/js/2.43a1e7cc.chunk.js.map": "/snow/static/js/2.43a1e7cc.chunk.js.map",
+    "static/js/2.ec9ffb68.chunk.js": "/snow/static/js/2.ec9ffb68.chunk.js",
+    "static/js/2.ec9ffb68.chunk.js.map": "/snow/static/js/2.ec9ffb68.chunk.js.map",
     "index.html": "/snow/index.html",
     "static/css/main.8efdf476.chunk.css.map": "/snow/static/css/main.8efdf476.chunk.css.map",
-    "static/js/2.43a1e7cc.chunk.js.LICENSE.txt": "/snow/static/js/2.43a1e7cc.chunk.js.LICENSE.txt"
+    "static/js/2.ec9ffb68.chunk.js.LICENSE.txt": "/snow/static/js/2.ec9ffb68.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.f177844a.js",
-    "static/js/2.43a1e7cc.chunk.js",
+    "static/js/2.ec9ffb68.chunk.js",
     "static/css/main.8efdf476.chunk.css",
-    "static/js/main.25569508.chunk.js"
+    "static/js/main.1c0d8fa5.chunk.js"
   ]
 }
